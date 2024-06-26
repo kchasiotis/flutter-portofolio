@@ -13,17 +13,17 @@ const TodoItem = ({listItem, isChecked, handleCheckbox, removeItem, saveEditedIt
         saveEditedItem(textValue);
     }
 
-    return <tr>
-        <td><input type="checkbox" checked={isChecked} onChange={handleCheckbox}/></td>
-        <td>{editingItem ? <input type="text" value={textValue} onChange={(e) => setTextValue(e.target.value)}/> :
-            <p>{listItem}</p>}</td>
-        <td>
+    return <div className="todoItem" style={{display: 'flex', width:'100%', justifyContent: 'space-between'}}>
+        <div><input type="checkbox" checked={isChecked} onChange={handleCheckbox}/></div>
+        <div>{editingItem ? <input type="text" value={textValue} onChange={(e) => setTextValue(e.target.value)}/> :
+            <p>{listItem}</p>}</div>
+        <div>
             <button onClick={removeItem}>Remove</button>
-        </td>
-        <td>
+        </div>
+        <div>
             {editingItem ? <button onClick={saveEdited}>Save</button> : <button onClick={handleEdit}>Edit</button>}
-        </td>
-    </tr>
+        </div>
+    </div>
 }
 
 export const TodoScreen = () => {
@@ -81,22 +81,29 @@ export const TodoScreen = () => {
                 <button style={{width: '100%',}} onClick={removeDone}>Remove completed</button>
             </div>
         </div>
-        <table>
-            <thead>
-            <tr>
-                <th>Checkbox</th>
-                <th>Name</th>
-                <th>Remove</th>
-                <th>Edit</th>
-            </tr>
-            </thead>
-            <tbody>
-            {todoList.map((listItem, index) => <TodoItem listItem={listItem.value}
-                                                         handleCheckbox={handleCheckbox(index)}
-                                                         removeItem={removeItem(index)}
-                                                         saveEditedItem={saveEditedItem(index)}
-                                                         isChecked={listItem.checked}></TodoItem>)}
-            </tbody>
-        </table>
+        <div className="todoTable">
+            <div style={{display: 'flex', textAlign: 'center'}}>
+                <div style={{display: 'flex', flex: 1, justifyContent: 'center'}}>
+                    <h5>Checkbox</h5>
+                </div>
+                <div style={{display: 'flex', flex: 1, justifyContent: 'center'}}>
+                    <h5>Name</h5>
+                </div>
+                <div style={{display: 'flex', flex: 1, justifyContent: 'center'}}>
+                    <h5>Remove</h5>
+                </div>
+                <div style={{display: 'flex', flex: 1, justifyContent: 'center'}}>
+                    <h5>Edit</h5>
+                </div>
+            </div>
+
+            <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                {todoList.map((listItem, index) => <TodoItem listItem={listItem.value}
+                                                             handleCheckbox={handleCheckbox(index)}
+                                                             removeItem={removeItem(index)}
+                                                             saveEditedItem={saveEditedItem(index)}
+                                                             isChecked={listItem.checked}></TodoItem>)}
+            </div>
+        </div>
     </div>
 }

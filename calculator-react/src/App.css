@@ -1,0 +1,63 @@
+.App {
+    background-color: #272020;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+}
+
+.calculatorHeader {
+    background-color: white;
+    height: 50px;
+    color: black;
+    display: flex;
+    justify-content: end;
+    padding-right: 10px;
+    border: 2px solid black;
+}
+
+.calculator {
+    width: 40%;
+}
+
+.numberRow {
+    display: flex;
+    width: 100%;
+}
+
+.numberRow button {
+    display: flex;
+    flex: 1;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+
+}
+
+.calcBody {
+    display: flex;
+}
+
+.numberButtons {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.actionColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.actionColumn button {
+    width: 30px;
+    height: 100%;
+    background-color: white;
+    font-size: 20px;
+}
+
+.error {
+    background-color: red;
+}
